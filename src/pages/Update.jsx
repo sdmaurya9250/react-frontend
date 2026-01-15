@@ -9,24 +9,25 @@ export default function Update({ user }) {
 useEffect(() => {
   const checkStatus = async () => {
     if (!user?.uid) return;
-    try {
-      const response = await fetch(`http://localhost:5000/api/check-profile/${user.uid}`);
-      const data = await response.json();
-      
-      if (data.isComplete) {
-        // Pre-fill the states with fetched data
-        setGender(data.gender);
-        setLocation(data.location);
-        setShowPopup(false); // Close if already complete
-      } else {
-        setShowPopup(true); // Open if data is missing
-      }
-    } catch (err) {
-      console.error("Error fetching profile:", err);
+
+    const response = await fetch(`http://localhost:5000/api/check-profile/${user.uid}`);
+    const data = await response.json();
+
+    console.log("Profile Check:", data);
+
+    if (data.isComplete) {
+      setGender(data.gender || "");
+      setLocation(data.location || "");
+      setShowPopup(false);
+    } else {
+      setShowPopup(true);
     }
   };
+
   checkStatus();
 }, [user]);
+
+
   const saveProfile = async () => {
     if (!gender || !location) {
       alert("Please select gender and enter location");

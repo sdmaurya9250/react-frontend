@@ -56,7 +56,7 @@ export default function LoginModal({ onClose }) {
 
         {/* Title */}
         <h2 className="text-2xl font-bold text-center mb-2">
-          Welcome to Random<span className="text-indigo-400">Connect</span>
+          Blink
         </h2>
         <p className="text-center text-gray-400 text-sm mb-6">
           Login to start chatting instantly
