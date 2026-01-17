@@ -214,7 +214,7 @@ export default function Dashboard() {
   return (
     <div className="h-screen w-full bg-slate-950 text-white overflow-hidden flex flex-col">
       <Header user={user} />
-      <Update user={user} />
+      {user && <Update user={user} />}
       <main className="flex-1 flex flex-col md:flex-row gap-4 p-4 min-h-0">
         {/* LEFT: YOU */}
         <div className="flex-1 bg-black rounded-3xl overflow-hidden relative border-2 border-orange-500/20">
@@ -222,7 +222,6 @@ export default function Dashboard() {
           <div className="absolute top-4 left-4 bg-orange-500 text-[10px] font-bold px-2 py-1 rounded">YOU</div>
         </div>
 
-        {/* RIGHT: STRANGER */}
 {/* RIGHT: STRANGER */}
 <div className="flex-1 bg-white/[0.03] rounded-3xl overflow-hidden relative border border-white/10">
   {connected ? (
